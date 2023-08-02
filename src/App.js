@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app-header">
+        <h1>My Schedule and To-Do List App</h1>
       </header>
+      <main className="app-main">
+        <div className="app-sidebars">
+          {/* Komponen samping */}
+        </div>
+        <div className="app-content">
+          <Home /> {/* Gunakan komponen Home */}
+          {/* Komponen lain */}
+        </div>
+      </main>
     </div>
   );
 }
