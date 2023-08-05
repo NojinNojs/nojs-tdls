@@ -1,19 +1,17 @@
 import React from 'react';
 
-const FilterOptions = ({ filters, selectedFilter, onFilterChange }) => {
+function FilterOptions({ options }) {
   return (
     <div className="filter-options">
-      <span>Filter by:</span>
-      <select value={selectedFilter} onChange={(e) => onFilterChange(e.target.value)}>
-        <option value="">All</option>
-        {filters.map((filter) => (
-          <option key={filter} value={filter}>
-            {filter}
-          </option>
+      <h3>Filter Options</h3>
+      <ul>
+        {options.map(option => (
+          <li key={option}>{option}</li>
         ))}
-      </select>
+      </ul>
     </div>
   );
-};
+}
 
 export default FilterOptions;
+// a

@@ -1,13 +1,15 @@
 import React from 'react';
+import CategoryItem from './CategoryItem'; // Pastikan path-nya sesuai
 
-const CategoryItem = ({ category }) => {
-  const { name, color } = category;
-
+function Categories({ categories }) {
   return (
-    <li className="category-item" style={{ backgroundColor: color }}>
-      {name}
-    </li>
+    <div className="categories">
+      <h3>Categories</h3>
+      {categories.map((category) => (
+        <CategoryItem key={category.id} category={category} />
+      ))}
+    </div>
   );
-};
+}
 
-export default CategoryItem;
+export default Categories;

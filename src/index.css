@@ -6,6 +6,7 @@ body, h1, h2, h3, p, ul, li, button, input {
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
+  box-sizing: border-box; /* Add box-sizing property */
 }
 
 /* Set up basic styles */
@@ -19,6 +20,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box; /* Add box-sizing property */
 }
 
 /* Header styles */
@@ -35,6 +37,7 @@ body {
   width: 25%;
   background-color: #f8f8f8;
   padding: 20px;
+  box-sizing: border-box; /* Add box-sizing property */
 }
 
 /* Main content styles */
@@ -42,6 +45,7 @@ body {
   float: right;
   width: 75%;
   padding: 20px;
+  box-sizing: border-box; /* Add box-sizing property */
 }
 
 /* Component-specific styles can be added here */

@@ -20,3 +20,4 @@ const Detail = ({ item }) => {
 };
 
 export default Detail;
+// a

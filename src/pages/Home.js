@@ -1,43 +1,59 @@
-import React from 'react';
-import CategoryItem from '../components/categories/CategoryItem';
+import React, { useState } from 'react';
 import Categories from '../components/categories/Categories';
-import Button from '../components/common/Button';
-import Checkbox from '../components/common/Checkbox';
-import Modal from '../components/common/Modal';
 import Schedule from '../components/schedule/Schedule';
-import ScheduleHeader from '../components/schedule/ScheduleHeader';
-import ScheduleDay from '../components/schedule/ScheduleDay';
-import ScheduleWeek from '../components/schedule/ScheduleWeek';
-import ScheduleMonth from '../components/schedule/ScheduleMonth';
-import SearchBar from '../components/search/SearchBar';
-import FilterOptions from '../components/search/FilterOptions';
 import TodoList from '../components/todo/TodoList';
-import TodoItem from '../components/todo/TodoItem';
 import TodoForm from '../components/todo/TodoForm';
+import TodoHeader from '../components/todo/TodoItem';
 
 function Home() {
+  const [categories, setCategories] = useState([]);
+  const [schedule, setSchedule] = useState([]);
+  const [todos, setTodos] = useState([]);
+
+  const handleAddSchedule = (newSchedule) => {
+    setSchedule([...schedule, newSchedule]);
+  };
+
+  const handleDeleteSchedule = (scheduleId) => {
+    setSchedule(schedule.filter((item) => item.id !== scheduleId));
+  };
+
+  const handleAddTodo = (newTodo) => {
+    setTodos([...todos, newTodo]);
+  };
+
+  const handleDeleteTodo = (todoId) => {
+    setTodos(todos.filter((todo) => todo.id !== todoId));
+  };
+
+  const handleToggleComplete = (todoId) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
   return (
     <div>
       <h2>Welcome to My App</h2>
       <div className="home-content">
         <div className="home-sidebar">
-          <Categories />
-          <CategoryItem />
-          <SearchBar />
-          <FilterOptions />
+          <Categories categories={categories} setCategories={setCategories} />
         </div>
         <div className="home-main-content">
-          <Schedule/>
-          <ScheduleHeader />
-          <ScheduleDay />
-          <ScheduleWeek />
-          <ScheduleMonth />
-          <TodoList />
-          <TodoItem />
-          <TodoForm />
-          <Button />
-          <Checkbox />
-          <Modal />
+          <TodoHeader count={todos.length} />
+          <Schedule
+            schedule={schedule}
+            onDeleteSchedule={handleDeleteSchedule}
+            onAddSchedule={handleAddSchedule}
+          />
+          <TodoList
+            todos={todos}
+            onDeleteTodo={handleDeleteTodo}
+            onToggleComplete={handleToggleComplete}
+          />
+          <TodoForm handleAddTodo={handleAddTodo} />
         </div>
       </div>
     </div>
@@ -45,3 +61,4 @@ function Home() {
 }
 
 export default Home;
+// a
